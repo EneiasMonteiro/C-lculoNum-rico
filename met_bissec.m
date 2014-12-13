@@ -16,5 +16,5 @@ while norm(b - a) > err
 	k = k+1;
 end
 disp(['result aprox ' num2str(xk)]);
-disp(['result aprox aplicado na func ' num2str(func(xk))]);
+disp(['result aprox aplicado na func ' num2str(f(xk))]);
 disp(['numero iterac ' num2str(k)]);
