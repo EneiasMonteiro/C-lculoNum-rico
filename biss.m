@@ -1,21 +1,20 @@
-%script utilizado para execução do método de newton
-clear,clc
-cf = input('digite a função de iteração : ');
-syms x
+%script utilizado para o método da bissecção
+disp('método da bissecção')
+a = input('digite o valor de a: ');
+b = input('digite o valor de b: ');
+err = input('digite o valor de tolerancia: ');
+cf = input('digite a função (entre aspas simples): ');
 f = inline(cf);
-derivada = diff(cf,x);
-df = inline(derivada);
-tol = input('digite a tolerancia : ');
-error = 50;
-x = input('valor inicial: ');
-n = 0;
-
-disp('  n  	xi');
-while(error>tol)
-	fprintf('\t%i\t%3.5f\t\n',n,x);
-	n = n+1;
-	x = x - f(x)/df(x);
-	error = abs(f(x));
-    
+k = 0;
+while norm(b - a) > err
+	xk = (a+b)/2;
+	if((f(a) * f(xk))>0)
+	a = xk;
+	else
+	b = xk;
+	end
+	k = k+1;
 end
-disp(['result aprox aplicado na func ' num2str(f(x))])
+disp(['result aprox ' num2str(xk)]);
+disp(['result aprox aplicado na func ' num2str(func(xk))]);
+disp(['numero iterac ' num2str(k)]);
